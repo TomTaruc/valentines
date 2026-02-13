@@ -129,8 +129,8 @@ function App() {
           <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-2 md:gap-4 px-2">
             {personalGallery.map((img, index) => (
               <div key={index} className="aspect-square overflow-hidden rounded-lg md:rounded-xl shadow-md border-2 border-white hover:scale-105 transition-transform duration-300">
-                {/* Fixed image source path by removing the leading slash */}
-                <img src={img} alt={`Memory ${index}`} className="w-full h-full object-cover" />
+                {/* Fix: Prepend the base URL to images stored in the public folder */}
+                <img src={`${import.meta.env.BASE_URL}${img}`} alt={`Memory ${index}`} className="w-full h-full object-cover" />
               </div>
             ))}
           </div>
