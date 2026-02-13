@@ -50,7 +50,6 @@ function App() {
     const buttonHeight = 45;
     const padding = 20;
     
-    // Improved coordinate calculation to prevent white screen crashes
     const maxWidth = window.innerWidth - buttonWidth - padding;
     const maxHeight = window.innerHeight - buttonHeight - padding;
     
@@ -130,7 +129,8 @@ function App() {
           <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-2 md:gap-4 px-2">
             {personalGallery.map((img, index) => (
               <div key={index} className="aspect-square overflow-hidden rounded-lg md:rounded-xl shadow-md border-2 border-white hover:scale-105 transition-transform duration-300">
-                <img src={`/${img}`} alt={`Memory ${index}`} className="w-full h-full object-cover" />
+                {/* Fixed image source path for sub-directory hosting */}
+                <img src={img} alt={`Memory ${index}`} className="w-full h-full object-cover" />
               </div>
             ))}
           </div>
@@ -139,7 +139,6 @@ function App() {
             onClick={() => setShowDetails(true)}
             className="w-full bg-gradient-to-r from-purple-600 to-yellow-500 text-white font-black py-4 md:py-6 px-4 md:px-8 rounded-xl md:rounded-2xl shadow-xl transition-all transform active:scale-95 flex items-center justify-center gap-2 group"
           >
-            <Sparkles className="animate-pulse w-5 h-5 md:w-6 md:h-6" />
             <span className="text-lg md:text-2xl tracking-tighter uppercase italic">CLICK ME :p!</span>
             <Sparkles className="animate-pulse w-5 h-5 md:w-6 md:h-6" />
           </button>
